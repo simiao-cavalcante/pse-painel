@@ -268,6 +268,46 @@
       cursor: pointer;
     }
     .mais:hover { background: var(--azul-suave); }
+    #app[hidden], #porta[hidden] { display: none !important; }
+    #porta {
+      min-height: 100dvh;
+      display: grid;
+      place-items: center;
+      padding: 1.5rem;
+      background: linear-gradient(160deg, #1e3a5f 0%, #1d4ed8 100%);
+    }
+    #porta form {
+      width: min(24rem, 100%);
+      background: #fff;
+      padding: 1.5rem 1.4rem 1.4rem;
+      border: 1px solid #bfdbfe;
+    }
+    #porta h1 {
+      font-size: 1.55rem;
+      color: var(--azul-escuro);
+      margin-bottom: .35rem;
+    }
+    #porta p { margin: 0 0 1rem; color: var(--texto-suave); }
+    #porta label { display: grid; gap: .35rem; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; color: var(--azul-escuro); }
+    #porta input {
+      min-height: 44px;
+      padding: .55rem .7rem;
+      border: 1px solid var(--linha);
+      font: inherit;
+    }
+    #porta button {
+      appearance: none;
+      width: 100%;
+      min-height: 44px;
+      margin-top: 1rem;
+      border: 0;
+      background: var(--azul);
+      color: #fff;
+      font: inherit;
+      cursor: pointer;
+    }
+    #porta button:disabled { opacity: .5; cursor: not-allowed; }
+    #porta .erro { color: #9a3412; margin: .7rem 0 0; min-height: 1.3em; }
     @media (max-width: 1100px) {
       .topo-pagina, main { grid-template-columns: 1fr; }
       .kpis { grid-template-columns: repeat(2, 1fr); }
@@ -282,6 +322,18 @@
   </style>
 </head>
 <body>
+  <div id="porta" hidden>
+    <form id="form-senha">
+      <h1>Painel da PSE</h1>
+      <p>Esta página é restrita à chefia e a quem ela indicar.</p>
+      <label for="senha">Senha
+        <input id="senha" name="senha" type="password" autocomplete="current-password" required />
+      </label>
+      <button type="submit" id="entrar">Entrar</button>
+      <p class="erro" id="erro-senha" role="alert"></p>
+    </form>
+  </div>
+  <div id="app">
   <a class="saltar" href="#conteudo">Ir para o conteúdo</a>
   <header class="topo-pagina">
     <div>
@@ -317,6 +369,7 @@
     </div>
     <div class="processos" id="processos"></div>
   </section>
+  </div>
   <script>
     const TOTAL = 2942;
     const FAMILIAS = {
@@ -652,21 +705,80 @@
       if (!r.ok) throw new Error(nome);
       return r.json();
     });
-    Promise.all([
-      json("resumo_acervo.json"),
-      json("lotes_tematicos.json"),
-      json("acoes.json").catch(() => []),
-    ]).then(([resumo, lotes, acoes]) => {
+    const b64paraBytes = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
+    async function chaveDaSenha(senha, salt, iter) {
+      const material = await crypto.subtle.importKey("raw", new TextEncoder().encode(senha), "PBKDF2", false, ["deriveKey"]);
+      return crypto.subtle.deriveKey(
+        { name: "PBKDF2", salt, iterations: iter, hash: "SHA-256" },
+        material,
+        { name: "AES-GCM", length: 256 },
+        false,
+        ["decrypt"],
+      );
+    }
+    async function abrirEnvelope(envelope, senha) {
+      const chave = await chaveDaSenha(senha, b64paraBytes(envelope.salt), envelope.iter);
+      const limpo = await crypto.subtle.decrypt(
+        { name: "AES-GCM", iv: b64paraBytes(envelope.iv) },
+        chave,
+        b64paraBytes(envelope.data),
+      );
+      return JSON.parse(new TextDecoder().decode(limpo));
+    }
+    function iniciarPainel({ resumo, lotes, acoes }) {
       estado.resumo = resumo;
       estado.lotes = lotes;
       estado.acoes = Array.isArray(acoes) ? acoes : [];
+      document.getElementById("porta").hidden = true;
+      document.getElementById("app").hidden = false;
       if (!estado.acoes.length) {
         document.getElementById("olho").textContent =
           "2.942 processos da PSE. Clique num recorte para ver as ações possíveis. Os textos individuais das ações ficam só na cópia local.";
       }
       pintarKpis();
       aplicarEixo("lotes");
-    });
+    }
+
+    async function pedirSenha(envelope) {
+      document.getElementById("app").hidden = true;
+      document.getElementById("porta").hidden = false;
+      const campo = document.getElementById("senha");
+      const erro = document.getElementById("erro-senha");
+      const botao = document.getElementById("entrar");
+      const guardada = sessionStorage.getItem("pse-painel-senha");
+      const tentar = async (senha) => {
+        botao.disabled = true;
+        erro.textContent = "";
+        try {
+          const dados = await abrirEnvelope(envelope, senha);
+          sessionStorage.setItem("pse-painel-senha", senha);
+          iniciarPainel(dados);
+        } catch {
+          sessionStorage.removeItem("pse-painel-senha");
+          erro.textContent = "Senha incorreta.";
+          campo.focus();
+        } finally {
+          botao.disabled = false;
+        }
+      };
+      document.getElementById("form-senha").addEventListener("submit", (ev) => {
+        ev.preventDefault();
+        tentar(campo.value);
+      });
+      if (guardada) tentar(guardada);
+      else campo.focus();
+    }
+
+    fetch("dados.enc.json")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((envelope) => {
+        if (envelope?.data) return pedirSenha(envelope);
+        return Promise.all([
+          json("resumo_acervo.json"),
+          json("lotes_tematicos.json"),
+          json("acoes.json").catch(() => []),
+        ]).then(([resumo, lotes, acoes]) => iniciarPainel({ resumo, lotes, acoes }));
+      });
   </script>
 </body>
 </html>
