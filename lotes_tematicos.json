@@ -1,0 +1,1201 @@
+{
+  "lotes_exclusivos": [
+    {
+      "lote": "Cobrança contratual / faturas / inadimplemento",
+      "n": 1232,
+      "postos": [
+        [
+          "BRAULIO DE CARVALHO GUIMARAES",
+          183
+        ],
+        [
+          "LEDA BARROS DE AZEVEDO VIANNA",
+          183
+        ],
+        [
+          "THIAGO KNUPP SOUZA DE ANDRADE",
+          165
+        ],
+        [
+          "RICARDO ALMEIDA RIBEIRO DA SILVA",
+          152
+        ],
+        [
+          "DOUGLAS ALEXANDER BATISTA",
+          152
+        ],
+        [
+          "RAPHAELLE COSTA CARVALHO",
+          150
+        ],
+        [
+          "JULIA ROMERO MAGALHAES SOARES",
+          143
+        ],
+        [
+          "GUSTAVO MOTA GUEDES",
+          69
+        ],
+        [
+          "BRUNA RODRIGUES TSCHAFFON",
+          22
+        ],
+        [
+          "RICARDO LOPES LIMONGI",
+          13
+        ]
+      ],
+      "exemplos": [
+        {
+          "prin": "Poder de polícia",
+          "sec": "Execução fiscal; Dívida ativa",
+          "posto": "RICARDO ALMEIDA RIBEIRO DA SILVA"
+        },
+        {
+          "prin": "Responsabilidade civil contratual",
+          "sec": "Secretaria municipal de saúde; Contrato de fornecimento",
+          "posto": "BRAULIO DE CARVALHO GUIMARAES"
+        },
+        {
+          "prin": "Responsabilidade Civil",
+          "sec": "Rio-Águas; Fornecimento",
+          "posto": "LEDA BARROS DE AZEVEDO VIANNA"
+        }
+      ]
+    },
+    {
+      "lote": "Acidentes de trânsito / ônibus / BRT / subsidiária",
+      "n": 309,
+      "postos": [
+        [
+          "DOUGLAS ALEXANDER BATISTA",
+          66
+        ],
+        [
+          "JULIA ROMERO MAGALHAES SOARES",
+          63
+        ],
+        [
+          "THIAGO KNUPP SOUZA DE ANDRADE",
+          54
+        ],
+        [
+          "RAPHAELLE COSTA CARVALHO",
+          38
+        ],
+        [
+          "RICARDO ALMEIDA RIBEIRO DA SILVA",
+          37
+        ],
+        [
+          "BRAULIO DE CARVALHO GUIMARAES",
+          27
+        ],
+        [
+          "LEDA BARROS DE AZEVEDO VIANNA",
+          18
+        ],
+        [
+          "GUSTAVO MOTA GUEDES",
+          4
+        ],
+        [
+          "RICARDO LOPES LIMONGI",
+          2
+        ]
+      ],
+      "exemplos": [
+        {
+          "prin": "Responsabilidade Civil",
+          "sec": "Acidente de trânsito; Linha amarela; Motocicleta",
+          "posto": "DOUGLAS ALEXANDER BATISTA"
+        },
+        {
+          "prin": "Responsabilidade Civil",
+          "sec": "Acidente de trânsito; Atropelamento; BRT",
+          "posto": "DOUGLAS ALEXANDER BATISTA"
+        },
+        {
+          "prin": "Responsabilidade Civil",
+          "sec": "Óbito; Transporte; Acidente de trânsito; BRT",
+          "posto": "DOUGLAS ALEXANDER BATISTA"
+        }
+      ]
+    },
+    {
+      "lote": "Contrato administrativo / improbidade / anulação / concessão",
+      "n": 233,
+      "postos": [
+        [
+          "JULIA ROMERO MAGALHAES SOARES",
+          42
+        ],
+        [
+          "RAPHAELLE COSTA CARVALHO",
+          40
+        ],
+        [
+          "DOUGLAS ALEXANDER BATISTA",
+          29
+        ],
+        [
+          "LEDA BARROS DE AZEVEDO VIANNA",
+          25
+        ],
+        [
+          "RICARDO ALMEIDA RIBEIRO DA SILVA",
+          25
+        ],
+        [
+          "THIAGO KNUPP SOUZA DE ANDRADE",
+          19
+        ],
+        [
+          "RICARDO LOPES LIMONGI",
+          16
+        ],
+        [
+          "BRAULIO DE CARVALHO GUIMARAES",
+          15
+        ],
+        [
+          "GUSTAVO MOTA GUEDES",
+          14
+        ],
+        [
+          "BRUNA RODRIGUES TSCHAFFON",
+          8
+        ]
+      ],
+      "exemplos": [
+        {
+          "prin": "Contrato administrativo",
+          "sec": "Equilíbrio econômico-financeiro; Anulação; Administração; Cemitério",
+          "posto": "JULIA ROMERO MAGALHAES SOARES"
+        },
+        {
+          "prin": "Transporte",
+          "sec": "Contrato de concessão; Ônibus",
+          "posto": "RICARDO LOPES LIMONGI"
+        },
+        {
+          "prin": "Contrato administrativo",
+          "sec": "Improbidade administrativa; Prestação de serviços",
+          "posto": "GUSTAVO MOTA GUEDES"
+        }
+      ]
+    },
+    {
+      "lote": "Outros / residual",
+      "n": 203,
+      "postos": [
+        [
+          "RAPHAELLE COSTA CARVALHO",
+          40
+        ],
+        [
+          "DOUGLAS ALEXANDER BATISTA",
+          31
+        ],
+        [
+          "RICARDO ALMEIDA RIBEIRO DA SILVA",
+          30
+        ],
+        [
+          "JULIA ROMERO MAGALHAES SOARES",
+          26
+        ],
+        [
+          "BRAULIO DE CARVALHO GUIMARAES",
+          26
+        ],
+        [
+          "LEDA BARROS DE AZEVEDO VIANNA",
+          19
+        ],
+        [
+          "THIAGO KNUPP SOUZA DE ANDRADE",
+          14
+        ],
+        [
+          "GUSTAVO MOTA GUEDES",
+          9
+        ],
+        [
+          "BRUNA RODRIGUES TSCHAFFON",
+          7
+        ],
+        [
+          "RICARDO LOPES LIMONGI",
+          1
+        ]
+      ],
+      "exemplos": [
+        {
+          "prin": "Responsabilidade Civil",
+          "sec": "Acidente; Morte",
+          "posto": "JULIA ROMERO MAGALHAES SOARES"
+        },
+        {
+          "prin": "Ação anulatória",
+          "sec": "",
+          "posto": "THIAGO KNUPP SOUZA DE ANDRADE"
+        },
+        {
+          "prin": "Responsabilidade Civil",
+          "sec": "Perdas e danos",
+          "posto": "BRUNA RODRIGUES TSCHAFFON"
+        }
+      ]
+    },
+    {
+      "lote": "Educação / escolas / aluno / agressão escolar",
+      "n": 148,
+      "postos": [
+        [
+          "BRAULIO DE CARVALHO GUIMARAES",
+          26
+        ],
+        [
+          "RAPHAELLE COSTA CARVALHO",
+          25
+        ],
+        [
+          "LEDA BARROS DE AZEVEDO VIANNA",
+          23
+        ],
+        [
+          "RICARDO ALMEIDA RIBEIRO DA SILVA",
+          19
+        ],
+        [
+          "THIAGO KNUPP SOUZA DE ANDRADE",
+          16
+        ],
+        [
+          "JULIA ROMERO MAGALHAES SOARES",
+          14
+        ],
+        [
+          "DOUGLAS ALEXANDER BATISTA",
+          11
+        ],
+        [
+          "BRUNA RODRIGUES TSCHAFFON",
+          8
+        ],
+        [
+          "RICARDO LOPES LIMONGI",
+          4
+        ],
+        [
+          "GUSTAVO MOTA GUEDES",
+          2
+        ]
+      ],
+      "exemplos": [
+        {
+          "prin": "Responsabilidade Civil",
+          "sec": "Aluno; Agressão física; Escola pública municipal; Secretaria municipal de educação; Abuso sexual",
+          "posto": "BRAULIO DE CARVALHO GUIMARAES"
+        },
+        {
+          "prin": "Educação",
+          "sec": "Passagem gratuita; Aluno; Estabelecimento particular de ensino",
+          "posto": "LEDA BARROS DE AZEVEDO VIANNA"
+        },
+        {
+          "prin": "Responsabilidade Civil",
+          "sec": "Escola pública municipal; Secretaria municipal de educação; Agressão física; Aluno",
+          "posto": "BRAULIO DE CARVALHO GUIMARAES"
+        }
+      ]
+    },
+    {
+      "lote": "Obrigação de fazer — demais políticas públicas",
+      "n": 119,
+      "postos": [
+        [
+          "RAPHAELLE COSTA CARVALHO",
+          18
+        ],
+        [
+          "RICARDO ALMEIDA RIBEIRO DA SILVA",
+          17
+        ],
+        [
+          "BRAULIO DE CARVALHO GUIMARAES",
+          16
+        ],
+        [
+          "BRUNA RODRIGUES TSCHAFFON",
+          16
+        ],
+        [
+          "DOUGLAS ALEXANDER BATISTA",
+          14
+        ],
+        [
+          "JULIA ROMERO MAGALHAES SOARES",
+          12
+        ],
+        [
+          "THIAGO KNUPP SOUZA DE ANDRADE",
+          11
+        ],
+        [
+          "LEDA BARROS DE AZEVEDO VIANNA",
+          10
+        ],
+        [
+          "GUSTAVO MOTA GUEDES",
+          4
+        ],
+        [
+          "RICARDO LOPES LIMONGI",
+          1
+        ]
+      ],
+      "exemplos": [
+        {
+          "prin": "Obrigação de fazer",
+          "sec": "Obra pública; Fornecimento; Água e esgoto",
+          "posto": "JULIA ROMERO MAGALHAES SOARES"
+        },
+        {
+          "prin": "Obrigação de fazer",
+          "sec": "Obra",
+          "posto": "JULIA ROMERO MAGALHAES SOARES"
+        },
+        {
+          "prin": "Obrigação de fazer",
+          "sec": "Cemitério",
+          "posto": "BRAULIO DE CARVALHO GUIMARAES"
+        }
+      ]
+    },
+    {
+      "lote": "Licitação / habilitação / inabilitação",
+      "n": 117,
+      "postos": [
+        [
+          "DOUGLAS ALEXANDER BATISTA",
+          21
+        ],
+        [
+          "JULIA ROMERO MAGALHAES SOARES",
+          19
+        ],
+        [
+          "RICARDO ALMEIDA RIBEIRO DA SILVA",
+          17
+        ],
+        [
+          "BRAULIO DE CARVALHO GUIMARAES",
+          16
+        ],
+        [
+          "THIAGO KNUPP SOUZA DE ANDRADE",
+          16
+        ],
+        [
+          "RAPHAELLE COSTA CARVALHO",
+          16
+        ],
+        [
+          "LEDA BARROS DE AZEVEDO VIANNA",
+          11
+        ],
+        [
+          "RICARDO LOPES LIMONGI",
+          1
+        ]
+      ],
+      "exemplos": [
+        {
+          "prin": "Licitação",
+          "sec": "Conservação; Secretaria municipal de obras e serviços públicos",
+          "posto": "RICARDO ALMEIDA RIBEIRO DA SILVA"
+        },
+        {
+          "prin": "Licitação",
+          "sec": "Processo de licitação; Sistema cicloviário",
+          "posto": "BRAULIO DE CARVALHO GUIMARAES"
+        },
+        {
+          "prin": "Licitação",
+          "sec": "Secretaria municipal de saúde; Inabilitação",
+          "posto": "JULIA ROMERO MAGALHAES SOARES"
+        }
+      ]
+    },
+    {
+      "lote": "Transporte / concessão / táxi / bilhetagem / linhas",
+      "n": 95,
+      "postos": [
+        [
+          "JULIA ROMERO MAGALHAES SOARES",
+          32
+        ],
+        [
+          "DOUGLAS ALEXANDER BATISTA",
+          17
+        ],
+        [
+          "RAPHAELLE COSTA CARVALHO",
+          13
+        ],
+        [
+          "THIAGO KNUPP SOUZA DE ANDRADE",
+          9
+        ],
+        [
+          "RICARDO LOPES LIMONGI",
+          7
+        ],
+        [
+          "RICARDO ALMEIDA RIBEIRO DA SILVA",
+          6
+        ],
+        [
+          "BRAULIO DE CARVALHO GUIMARAES",
+          6
+        ],
+        [
+          "LEDA BARROS DE AZEVEDO VIANNA",
+          4
+        ],
+        [
+          "GUSTAVO MOTA GUEDES",
+          1
+        ]
+      ],
+      "exemplos": [
+        {
+          "prin": "Transporte",
+          "sec": "Concessionária; Linha de ônibus",
+          "posto": "JULIA ROMERO MAGALHAES SOARES"
+        },
+        {
+          "prin": "Transporte",
+          "sec": "Concessionária; Ônibus",
+          "posto": "DOUGLAS ALEXANDER BATISTA"
+        },
+        {
+          "prin": "Transporte",
+          "sec": "Táxi",
+          "posto": "RAPHAELLE COSTA CARVALHO"
+        }
+      ]
+    },
+    {
+      "lote": "Poder de polícia — Vigilância sanitária",
+      "n": 93,
+      "postos": [
+        [
+          "RICARDO ALMEIDA RIBEIRO DA SILVA",
+          19
+        ],
+        [
+          "DOUGLAS ALEXANDER BATISTA",
+          18
+        ],
+        [
+          "LEDA BARROS DE AZEVEDO VIANNA",
+          14
+        ],
+        [
+          "RAPHAELLE COSTA CARVALHO",
+          14
+        ],
+        [
+          "THIAGO KNUPP SOUZA DE ANDRADE",
+          14
+        ],
+        [
+          "JULIA ROMERO MAGALHAES SOARES",
+          11
+        ],
+        [
+          "BRAULIO DE CARVALHO GUIMARAES",
+          3
+        ]
+      ],
+      "exemplos": [
+        {
+          "prin": "Poder de polícia",
+          "sec": "Vigilância sanitária",
+          "posto": "BRAULIO DE CARVALHO GUIMARAES"
+        },
+        {
+          "prin": "Poder de polícia",
+          "sec": "Multa administrativa; Vigilância sanitária",
+          "posto": "LEDA BARROS DE AZEVEDO VIANNA"
+        },
+        {
+          "prin": "Poder de polícia",
+          "sec": "Vigilância sanitária",
+          "posto": "RAPHAELLE COSTA CARVALHO"
+        }
+      ]
+    },
+    {
+      "lote": "Obrigação de fazer — assistência social / moradia / idoso / abrigo",
+      "n": 80,
+      "postos": [
+        [
+          "BRUNA RODRIGUES TSCHAFFON",
+          31
+        ],
+        [
+          "LEDA BARROS DE AZEVEDO VIANNA",
+          12
+        ],
+        [
+          "RAPHAELLE COSTA CARVALHO",
+          10
+        ],
+        [
+          "THIAGO KNUPP SOUZA DE ANDRADE",
+          8
+        ],
+        [
+          "BRAULIO DE CARVALHO GUIMARAES",
+          7
+        ],
+        [
+          "RICARDO ALMEIDA RIBEIRO DA SILVA",
+          5
+        ],
+        [
+          "DOUGLAS ALEXANDER BATISTA",
+          3
+        ],
+        [
+          "JULIA ROMERO MAGALHAES SOARES",
+          2
+        ],
+        [
+          "RICARDO LOPES LIMONGI",
+          1
+        ],
+        [
+          "GUSTAVO MOTA GUEDES",
+          1
+        ]
+      ],
+      "exemplos": [
+        {
+          "prin": "Obrigação de fazer",
+          "sec": "Assistência Social",
+          "posto": "BRUNA RODRIGUES TSCHAFFON"
+        },
+        {
+          "prin": "Obrigação de fazer",
+          "sec": "Assistência Social",
+          "posto": "LEDA BARROS DE AZEVEDO VIANNA"
+        },
+        {
+          "prin": "Obrigação de fazer",
+          "sec": "Idoso; Assistência Social",
+          "posto": "LEDA BARROS DE AZEVEDO VIANNA"
+        }
+      ]
+    },
+    {
+      "lote": "Poder de polícia — PROCON / defesa do consumidor",
+      "n": 76,
+      "postos": [
+        [
+          "RICARDO ALMEIDA RIBEIRO DA SILVA",
+          25
+        ],
+        [
+          "DOUGLAS ALEXANDER BATISTA",
+          14
+        ],
+        [
+          "THIAGO KNUPP SOUZA DE ANDRADE",
+          12
+        ],
+        [
+          "RAPHAELLE COSTA CARVALHO",
+          9
+        ],
+        [
+          "JULIA ROMERO MAGALHAES SOARES",
+          6
+        ],
+        [
+          "BRAULIO DE CARVALHO GUIMARAES",
+          5
+        ],
+        [
+          "LEDA BARROS DE AZEVEDO VIANNA",
+          5
+        ]
+      ],
+      "exemplos": [
+        {
+          "prin": "Poder de polícia",
+          "sec": "PROCON/RJ - Órgão municipal de proteção e defesa do consumidor",
+          "posto": "DOUGLAS ALEXANDER BATISTA"
+        },
+        {
+          "prin": "Poder de polícia",
+          "sec": "PROCON/RJ - Órgão municipal de proteção e defesa do consumidor",
+          "posto": "BRAULIO DE CARVALHO GUIMARAES"
+        },
+        {
+          "prin": "Poder de polícia",
+          "sec": "Defesa do consumidor",
+          "posto": "DOUGLAS ALEXANDER BATISTA"
+        }
+      ]
+    },
+    {
+      "lote": "Quedas / calçada / árvore / bueiro / via pública",
+      "n": 70,
+      "postos": [
+        [
+          "RICARDO ALMEIDA RIBEIRO DA SILVA",
+          14
+        ],
+        [
+          "GUSTAVO MOTA GUEDES",
+          14
+        ],
+        [
+          "BRAULIO DE CARVALHO GUIMARAES",
+          12
+        ],
+        [
+          "DOUGLAS ALEXANDER BATISTA",
+          10
+        ],
+        [
+          "RAPHAELLE COSTA CARVALHO",
+          7
+        ],
+        [
+          "JULIA ROMERO MAGALHAES SOARES",
+          6
+        ],
+        [
+          "LEDA BARROS DE AZEVEDO VIANNA",
+          3
+        ],
+        [
+          "THIAGO KNUPP SOUZA DE ANDRADE",
+          3
+        ],
+        [
+          "BRUNA RODRIGUES TSCHAFFON",
+          1
+        ]
+      ],
+      "exemplos": [
+        {
+          "prin": "Responsabilidade Civil",
+          "sec": "Queda; Calçada",
+          "posto": "LEDA BARROS DE AZEVEDO VIANNA"
+        },
+        {
+          "prin": "Responsabilidade Civil",
+          "sec": "Queda de árvore; Morte",
+          "posto": "RICARDO ALMEIDA RIBEIRO DA SILVA"
+        },
+        {
+          "prin": "Responsabilidade Civil",
+          "sec": "Locação",
+          "posto": "RICARDO ALMEIDA RIBEIRO DA SILVA"
+        }
+      ]
+    },
+    {
+      "lote": "ECA / infância e juventude",
+      "n": 45,
+      "postos": [
+        [
+          "BRUNA RODRIGUES TSCHAFFON",
+          22
+        ],
+        [
+          "BRAULIO DE CARVALHO GUIMARAES",
+          7
+        ],
+        [
+          "JULIA ROMERO MAGALHAES SOARES",
+          4
+        ],
+        [
+          "THIAGO KNUPP SOUZA DE ANDRADE",
+          3
+        ],
+        [
+          "LEDA BARROS DE AZEVEDO VIANNA",
+          3
+        ],
+        [
+          "RAPHAELLE COSTA CARVALHO",
+          3
+        ],
+        [
+          "RICARDO ALMEIDA RIBEIRO DA SILVA",
+          2
+        ],
+        [
+          "RICARDO LOPES LIMONGI",
+          1
+        ]
+      ],
+      "exemplos": [
+        {
+          "prin": "Estatuto da criança e do adolescente, 1990",
+          "sec": "Auto de infração; Menor",
+          "posto": "BRAULIO DE CARVALHO GUIMARAES"
+        },
+        {
+          "prin": "Outros",
+          "sec": "Conselho tutelar da criança e do adolescente; Funcionamento; Equipamento; Instalação; Irregularidade",
+          "posto": "THIAGO KNUPP SOUZA DE ANDRADE"
+        },
+        {
+          "prin": "Outros",
+          "sec": "Conselho tutelar da criança e do adolescente; Irregularidade; Destituição; Denúncia; Funcionamento",
+          "posto": "THIAGO KNUPP SOUZA DE ANDRADE"
+        }
+      ]
+    },
+    {
+      "lote": "Poder de polícia — demais (multas, fiscalização, CDA)",
+      "n": 44,
+      "postos": [
+        [
+          "RICARDO ALMEIDA RIBEIRO DA SILVA",
+          13
+        ],
+        [
+          "DOUGLAS ALEXANDER BATISTA",
+          12
+        ],
+        [
+          "JULIA ROMERO MAGALHAES SOARES",
+          5
+        ],
+        [
+          "THIAGO KNUPP SOUZA DE ANDRADE",
+          5
+        ],
+        [
+          "RAPHAELLE COSTA CARVALHO",
+          4
+        ],
+        [
+          "LEDA BARROS DE AZEVEDO VIANNA",
+          3
+        ],
+        [
+          "BRAULIO DE CARVALHO GUIMARAES",
+          2
+        ]
+      ],
+      "exemplos": [
+        {
+          "prin": "Poder de polícia",
+          "sec": "Multa administrativa; Conselho regional de farmácia",
+          "posto": "RICARDO ALMEIDA RIBEIRO DA SILVA"
+        },
+        {
+          "prin": "Poder de polícia",
+          "sec": "Certidão de dívida ativa; Multa administrativa",
+          "posto": "LEDA BARROS DE AZEVEDO VIANNA"
+        },
+        {
+          "prin": "Poder de polícia",
+          "sec": "",
+          "posto": "DOUGLAS ALEXANDER BATISTA"
+        }
+      ]
+    },
+    {
+      "lote": "Representação / ADI de inconstitucionalidade",
+      "n": 29,
+      "postos": [
+        [
+          "RAPHAELLE COSTA CARVALHO",
+          7
+        ],
+        [
+          "RICARDO ALMEIDA RIBEIRO DA SILVA",
+          5
+        ],
+        [
+          "LEDA BARROS DE AZEVEDO VIANNA",
+          4
+        ],
+        [
+          "DOUGLAS ALEXANDER BATISTA",
+          4
+        ],
+        [
+          "RICARDO LOPES LIMONGI",
+          3
+        ],
+        [
+          "BRAULIO DE CARVALHO GUIMARAES",
+          3
+        ],
+        [
+          "THIAGO KNUPP SOUZA DE ANDRADE",
+          2
+        ],
+        [
+          "BRUNA RODRIGUES TSCHAFFON",
+          1
+        ]
+      ],
+      "exemplos": [
+        {
+          "prin": "Representação de Inconstitucionalidade",
+          "sec": "",
+          "posto": "RAPHAELLE COSTA CARVALHO"
+        },
+        {
+          "prin": "Representação de Inconstitucionalidade",
+          "sec": "",
+          "posto": "RICARDO LOPES LIMONGI"
+        },
+        {
+          "prin": "Representação de Inconstitucionalidade",
+          "sec": "Segurança; Guarda Municipal",
+          "posto": "LEDA BARROS DE AZEVEDO VIANNA"
+        }
+      ]
+    },
+    {
+      "lote": "Trânsito / multa / auto de infração de trânsito",
+      "n": 21,
+      "postos": [
+        [
+          "THIAGO KNUPP SOUZA DE ANDRADE",
+          11
+        ],
+        [
+          "DOUGLAS ALEXANDER BATISTA",
+          7
+        ],
+        [
+          "LEDA BARROS DE AZEVEDO VIANNA",
+          1
+        ],
+        [
+          "RICARDO LOPES LIMONGI",
+          1
+        ],
+        [
+          "BRAULIO DE CARVALHO GUIMARAES",
+          1
+        ]
+      ],
+      "exemplos": [
+        {
+          "prin": "Trânsito",
+          "sec": "Exibição de documento; Leilão de veículo",
+          "posto": "DOUGLAS ALEXANDER BATISTA"
+        },
+        {
+          "prin": "Trânsito",
+          "sec": "Estacionamento público; Guardador de automóvel",
+          "posto": "DOUGLAS ALEXANDER BATISTA"
+        },
+        {
+          "prin": "Trânsito",
+          "sec": "Exibição de documento; Leilão de veículo",
+          "posto": "DOUGLAS ALEXANDER BATISTA"
+        }
+      ]
+    },
+    {
+      "lote": "Cemitério / funerário",
+      "n": 16,
+      "postos": [
+        [
+          "BRAULIO DE CARVALHO GUIMARAES",
+          5
+        ],
+        [
+          "RAPHAELLE COSTA CARVALHO",
+          3
+        ],
+        [
+          "JULIA ROMERO MAGALHAES SOARES",
+          3
+        ],
+        [
+          "LEDA BARROS DE AZEVEDO VIANNA",
+          2
+        ],
+        [
+          "DOUGLAS ALEXANDER BATISTA",
+          2
+        ],
+        [
+          "THIAGO KNUPP SOUZA DE ANDRADE",
+          1
+        ]
+      ],
+      "exemplos": [
+        {
+          "prin": "Responsabilidade Civil",
+          "sec": "Cemitério",
+          "posto": "RAPHAELLE COSTA CARVALHO"
+        },
+        {
+          "prin": "Responsabilidade Civil",
+          "sec": "Cemitério; Homicídio",
+          "posto": "BRAULIO DE CARVALHO GUIMARAES"
+        },
+        {
+          "prin": "Responsabilidade Civil",
+          "sec": "Cemitério",
+          "posto": "JULIA ROMERO MAGALHAES SOARES"
+        }
+      ]
+    },
+    {
+      "lote": "Saúde / hospital / medicamento / SMS (não cobrança pura)",
+      "n": 7,
+      "postos": [
+        [
+          "JULIA ROMERO MAGALHAES SOARES",
+          2
+        ],
+        [
+          "LEDA BARROS DE AZEVEDO VIANNA",
+          2
+        ],
+        [
+          "RICARDO ALMEIDA RIBEIRO DA SILVA",
+          1
+        ],
+        [
+          "RAPHAELLE COSTA CARVALHO",
+          1
+        ],
+        [
+          "DOUGLAS ALEXANDER BATISTA",
+          1
+        ]
+      ],
+      "exemplos": [
+        {
+          "prin": "Responsabilidade Civil",
+          "sec": "Registros públicos; Hospital municipal Souza Aguiar",
+          "posto": "JULIA ROMERO MAGALHAES SOARES"
+        },
+        {
+          "prin": "Excesso de execução",
+          "sec": "Secretaria municipal de saúde; Execução",
+          "posto": "RICARDO ALMEIDA RIBEIRO DA SILVA"
+        },
+        {
+          "prin": "Outros",
+          "sec": "Residência; Hospital municipal Lourenço Jorge",
+          "posto": "JULIA ROMERO MAGALHAES SOARES"
+        }
+      ]
+    },
+    {
+      "lote": "PREVI-RIO / financiamento imobiliário / empréstimo servidor",
+      "n": 5,
+      "postos": [
+        [
+          "RAPHAELLE COSTA CARVALHO",
+          3
+        ],
+        [
+          "JULIA ROMERO MAGALHAES SOARES",
+          1
+        ],
+        [
+          "GUSTAVO MOTA GUEDES",
+          1
+        ]
+      ],
+      "exemplos": [
+        {
+          "prin": "Seguridade Social",
+          "sec": "Empréstimo; Desconto em folha de pagamento; Revisão",
+          "posto": "RAPHAELLE COSTA CARVALHO"
+        },
+        {
+          "prin": "Responsabilidade Civil",
+          "sec": "Defesa civil; Indenização; Deslizamento; Imóvel; Interdição; Auxílio moradia",
+          "posto": "RAPHAELLE COSTA CARVALHO"
+        },
+        {
+          "prin": "Responsabilidade Civil",
+          "sec": "Servidor público municipal; Financiamento imobiliário; Suspensão; Desconto em folha de pagamento; Ressarcimento; Aluguel",
+          "posto": "JULIA ROMERO MAGALHAES SOARES"
+        }
+      ]
+    }
+  ],
+  "multi_tag": [
+    [
+      "Cobrança contratual / faturas / inadimplemento",
+      1232
+    ],
+    [
+      "Saúde / hospital / medicamento / SMS (não cobrança pura)",
+      419
+    ],
+    [
+      "Contrato administrativo / improbidade / anulação / concessão",
+      378
+    ],
+    [
+      "Acidentes de trânsito / ônibus / BRT / subsidiária",
+      342
+    ],
+    [
+      "Educação / escolas / aluno / agressão escolar",
+      296
+    ],
+    [
+      "Obrigação de fazer — demais políticas públicas",
+      241
+    ],
+    [
+      "Poder de polícia — demais (multas, fiscalização, CDA)",
+      230
+    ],
+    [
+      "Outros / residual",
+      203
+    ],
+    [
+      "Transporte / concessão / táxi / bilhetagem / linhas",
+      200
+    ],
+    [
+      "ECA / infância e juventude",
+      154
+    ],
+    [
+      "Licitação / habilitação / inabilitação",
+      153
+    ],
+    [
+      "Quedas / calçada / árvore / bueiro / via pública",
+      145
+    ],
+    [
+      "Poder de polícia — Vigilância sanitária",
+      98
+    ],
+    [
+      "Poder de polícia — PROCON / defesa do consumidor",
+      89
+    ],
+    [
+      "Obrigação de fazer — assistência social / moradia / idoso / abrigo",
+      83
+    ],
+    [
+      "Representação / ADI de inconstitucionalidade",
+      52
+    ],
+    [
+      "PREVI-RIO / financiamento imobiliário / empréstimo servidor",
+      50
+    ],
+    [
+      "Cemitério / funerário",
+      42
+    ],
+    [
+      "Trânsito / multa / auto de infração de trânsito",
+      24
+    ]
+  ],
+  "juizo_norm": [
+    [
+      "Outros / demais juízos",
+      859
+    ],
+    [
+      "03ª Vara da Fazenda Pública",
+      160
+    ],
+    [
+      "01ª Vara da Fazenda Pública",
+      158
+    ],
+    [
+      "Vara da Infância e Juventude",
+      153
+    ],
+    [
+      "16ª Vara da Fazenda Pública",
+      138
+    ],
+    [
+      "07ª Vara da Fazenda Pública",
+      132
+    ],
+    [
+      "04ª Vara da Fazenda Pública",
+      131
+    ],
+    [
+      "15ª Vara da Fazenda Pública",
+      131
+    ],
+    [
+      "06ª Vara da Fazenda Pública",
+      130
+    ],
+    [
+      "02ª Vara da Fazenda Pública",
+      116
+    ],
+    [
+      "05ª Vara da Fazenda Pública",
+      113
+    ],
+    [
+      "13ª Vara da Fazenda Pública",
+      112
+    ],
+    [
+      "10ª Vara da Fazenda Pública",
+      103
+    ],
+    [
+      "09ª Vara da Fazenda Pública",
+      98
+    ],
+    [
+      "12ª Vara da Fazenda Pública",
+      97
+    ],
+    [
+      "14ª Vara da Fazenda Pública",
+      94
+    ],
+    [
+      "08ª Vara da Fazenda Pública",
+      86
+    ],
+    [
+      "Justiça Federal",
+      75
+    ],
+    [
+      "Órgão Especial TJRJ",
+      56
+    ]
+  ]
+}

@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agrupar o acervo · PSE</title>
+  <style>
+    :root {
+      --navy: #132238;
+      --folha: #f7f1e4;
+      --latão: #c9b99a;
+      --tinta: #f4efe4;
+      --linha: rgba(201,185,154,.28);
+      --forte: #c45c26;
+      --moderado: #8a7040;
+      --especialista: #2f5d4a;
+      --residual: #6b7280;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      background: radial-gradient(1200px 700px at 10% -10%, #1c334d, var(--navy));
+      color: var(--tinta);
+    }
+    header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      padding: 1.3rem 1.8rem 0;
+      align-items: end;
+    }
+    h1 { margin: 0; font-size: 1.7rem; letter-spacing: -.03em; }
+    header p { margin: .35rem 0 0; max-width: 42rem; color: var(--latão); font-size: .95rem; }
+    .selo {
+      font-size: .68rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--latão);
+      border: 1px solid var(--linha);
+      padding: .35rem .55rem;
+      white-space: nowrap;
+    }
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: .7rem;
+      padding: 1rem 1.8rem 0;
+    }
+    .kpi {
+      border: 1px solid var(--linha);
+      padding: .65rem .75rem .55rem;
+      background: rgba(247,241,228,.04);
+    }
+    .kpi b { display: block; font-size: 1.45rem; font-variant-numeric: tabular-nums; }
+    .kpi span { font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: var(--latão); }
+    main {
+      display: grid;
+      grid-template-columns: 13rem 1fr 22rem;
+      gap: 1rem;
+      padding: 1rem 1.8rem 2rem;
+    }
+    @media (max-width: 1100px) {
+      header, main { grid-template-columns: 1fr; }
+      .kpis { grid-template-columns: repeat(2, 1fr); }
+    }
+    h2 {
+      margin: 0 0 .7rem;
+      font-size: .7rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--latão);
+    }
+    .eixos { display: grid; gap: .4rem; }
+    .eixo {
+      appearance: none;
+      background: transparent;
+      color: var(--tinta);
+      border: 1px solid var(--linha);
+      padding: .55rem .65rem;
+      text-align: left;
+      font: inherit;
+      cursor: pointer;
+    }
+    .eixo[aria-pressed="true"] {
+      background: var(--folha);
+      color: var(--navy);
+      border-color: var(--folha);
+    }
+    .eixo small { display: block; color: inherit; opacity: .7; font-size: .72rem; }
+    .cartao {
+      background: var(--folha);
+      color: var(--navy);
+      padding: 1rem 1.05rem 1.1rem;
+      box-shadow: 0 18px 40px rgba(0,0,0,.28);
+      min-height: 28rem;
+    }
+    .cartao.escuro {
+      background: transparent;
+      color: var(--tinta);
+      box-shadow: none;
+      border: 1px solid var(--linha);
+    }
+    .lista { display: grid; gap: .35rem; }
+    .grupo {
+      display: grid;
+      grid-template-columns: 4.2rem 1fr auto;
+      gap: .55rem;
+      align-items: center;
+      width: 100%;
+      text-align: left;
+      font: inherit;
+      color: inherit;
+      background: rgba(19,34,56,.04);
+      border: 1px solid rgba(19,34,56,.08);
+      padding: .45rem .55rem;
+      cursor: pointer;
+    }
+    .grupo:hover, .grupo[aria-current="true"] { background: #fff; border-color: var(--latão); }
+    .grupo .n { font-variant-numeric: tabular-nums; font-weight: 700; }
+    .grupo .nome { font-size: .92rem; }
+    .grupo .meta { font-size: .72rem; color: #6b5a38; }
+    .selo-acao {
+      font-size: .62rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .2rem .4rem;
+      white-space: nowrap;
+    }
+    .selo-acao.fatiar { background: #f3d6c4; color: #7a2e0c; }
+    .selo-acao.posto { background: #dce8e1; color: #1f4637; }
+    .selo-acao.afinidade { background: #e8dfc8; color: #5a4718; }
+    .selo-acao.chefia { background: #d6e0ee; color: #1d3557; }
+    .selo-acao.residual { background: #e5e7eb; color: #374151; }
+    .barra { height: .28rem; background: rgba(19,34,56,.1); margin-top: .25rem; }
+    .barra i { display: block; height: 100%; background: #8a7040; }
+    .vazio { color: #6b5a38; font-size: .9rem; }
+    .detalhe h3 { margin: 0 0 .35rem; font-size: 1.15rem; }
+    .detalhe p { margin: 0 0 .8rem; font-size: .92rem; line-height: 1.45; }
+    .postos { display: grid; gap: .3rem; margin: .8rem 0 1rem; }
+    .posto {
+      display: grid;
+      grid-template-columns: 1fr 2.6rem 4.5rem;
+      gap: .4rem;
+      align-items: center;
+      font-size: .82rem;
+    }
+    .posto .faixa { height: .35rem; background: rgba(247,241,228,.12); }
+    .posto .faixa i { display: block; height: 100%; background: var(--latão); }
+    .acoes { display: grid; gap: .45rem; }
+    .acao {
+      border: 1px solid var(--linha);
+      padding: .55rem .65rem;
+      background: rgba(247,241,228,.04);
+    }
+    .acao b { display: block; font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; }
+    .acao p { margin: .25rem 0 0; font-size: .82rem; color: var(--latão); }
+    .acao.vale { border-color: var(--folha); background: rgba(247,241,228,.1); }
+    .acao.vale b { color: var(--folha); }
+    .sublotes { display: grid; gap: .35rem; margin-top: .6rem; }
+    .sublote { font-size: .86rem; padding: .4rem .5rem; background: rgba(19,34,56,.05); }
+    .aviso { font-size: .78rem; color: #6b5a38; margin-top: .8rem; }
+    .acoes-do-lote {
+      margin: 0 1.8rem 2rem;
+      background: var(--folha);
+      color: var(--navy);
+      padding: 1rem 1.05rem 1.2rem;
+      box-shadow: 0 18px 40px rgba(0,0,0,.28);
+    }
+    .acoes-do-lote header {
+      display: grid;
+      grid-template-columns: 1fr 18rem;
+      gap: .8rem;
+      align-items: end;
+      padding: 0;
+    }
+    .acoes-do-lote h2 { margin: 0; }
+    .acoes-do-lote input {
+      width: 100%;
+      font: inherit;
+      padding: .45rem .6rem;
+      border: 1px solid rgba(19,34,56,.18);
+      background: #fff;
+    }
+    .processos { display: grid; gap: .55rem; margin-top: .85rem; max-height: 70vh; overflow: auto; }
+    .processo {
+      border: 1px solid rgba(19,34,56,.1);
+      padding: .65rem .75rem .7rem;
+      background: #fff;
+    }
+    .processo .topo {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: .6rem;
+      align-items: baseline;
+    }
+    .processo .pa { font-variant-numeric: tabular-nums; font-weight: 700; font-size: .92rem; }
+    .processo .quem { font-size: .82rem; color: #6b5a38; }
+    .processo .assuntos { margin: .25rem 0 .4rem; font-size: .8rem; color: #5a4a2a; }
+    .processo .resumo { margin: 0; font-size: .92rem; line-height: 1.45; white-space: pre-wrap; }
+    @media (max-width: 1100px) {
+      .acoes-do-lote header { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Como agrupar — e o que dá para fazer</h1>
+      <p>2.942 processos da PSE. Clique num recorte para ver as ações possíveis. Nada aqui grava posto; é só para decidir.</p>
+    </div>
+    <div class="selo">PSE · PGM-Rio · fotografia 2026-09-23</div>
+  </header>
+  <section class="kpis" id="kpis"></section>
+  <main>
+    <aside>
+      <h2>Agrupar por</h2>
+      <div class="eixos" id="eixos"></div>
+    </aside>
+    <section class="cartao">
+      <h2 id="titulo-lista">Lotes temáticos</h2>
+      <div class="lista" id="lista"></div>
+    </section>
+    <aside class="cartao escuro" id="detalhe">
+      <h2>Ações possíveis</h2>
+      <p class="vazio">Escolha um grupo à esquerda. As ações que valem para aquele recorte ficam destacadas.</p>
+    </aside>
+  </main>
+  <section class="acoes-do-lote" id="acoes-do-lote" hidden>
+    <header>
+      <div>
+        <h2 id="titulo-acoes">Ações deste recorte</h2>
+        <p class="aviso" id="conta-acoes" style="margin:.3rem 0 0"></p>
+      </div>
+      <input id="busca-acoes" type="search" placeholder="Buscar PA, resumo, assunto…" autocomplete="off" />
+    </header>
+    <div class="processos" id="processos"></div>
+  </section>
+  <script>
+    const TOTAL = 2942;
+    const FAMILIAS = {
+      "Responsabilidade civil contratual": "Cobrança / faturas",
+      "Responsabilidade Civil": "Acidentes / indenização",
+      "Contrato administrativo": "Contrato administrativo",
+      "Obrigação de fazer": "Obrigação de fazer",
+      "Poder de polícia": "Poder de polícia",
+      "Transporte": "Transporte",
+      "Licitação": "Licitação",
+      "Representação de Inconstitucionalidade": "Constitucional",
+      "Estatuto da criança e do adolescente, 1990": "ECA / infância",
+      "Direito Administrativo": "Direito administrativo",
+      "Improbidade administrativa": "Improbidade",
+      "Servidor Público Civil": "Servidor",
+      "Sistema Único de Saúde (SUS)": "Saúde / SUS",
+      "Sistema Nacional de Trânsito": "Trânsito",
+      "Sistema Único de Assistência Social (SUAS)": "Assistência social",
+      "Educação": "Educação",
+    };
+    const VEREDITO = {
+      "Cobrança contratual / faturas / inadimplemento": { selo: "fatiar", acao: "fatiar", texto: "FORTE demais. Não cabe em um posto. Fatiar por órgão, objeto, tipo de ação, valor ou ano." },
+      "Acidentes de trânsito / ônibus / BRT / subsidiária": { selo: "posto", acao: "posto", texto: "FORTE e pulverizado. Candidato a consolidar em posto, sem apagar quem já tem afinidade." },
+      "Contrato administrativo / improbidade / anulação / concessão": { selo: "posto", acao: "posto", texto: "FORTE e pulverizado. Candidato a posto — ou a dois, se anulação e improbidade não couberem juntos." },
+      "Outros / residual": { selo: "residual", acao: "residual", texto: "Residual de taxonomia. Não vira posto; serve para achar o que ainda não tem nome." },
+      "Educação / escolas / aluno / agressão escolar": { selo: "posto", acao: "posto", texto: "MODERADO. Dá para formar posto ou manter afinidade de quem já concentra." },
+      "Obrigação de fazer — demais políticas públicas": { selo: "posto", acao: "posto", texto: "MODERADO e misturado. Antes de virar posto, vale fatiar por política (saúde, educação, moradia)." },
+      "Licitação / habilitação / inabilitação": { selo: "posto", acao: "posto", texto: "MODERADO, 8 pessoas. Candidato a posto de licitação." },
+      "Transporte / concessão / táxi / bilhetagem / linhas": { selo: "afinidade", acao: "afinidade", texto: "MODERADO. Já há especialização informal (Julia). Preservar afinidade." },
+      "Poder de polícia — Vigilância sanitária": { selo: "posto", acao: "posto", texto: "MODERADO, 7 pessoas. Candidato a posto de vigilância sanitária." },
+      "Obrigação de fazer — assistência social / moradia / idoso / abrigo": { selo: "chefia", acao: "chefia", texto: "Já concentra em Bruna. Reservar à chefia, não abrir como posto especialista." },
+      "Poder de polícia — PROCON / defesa do consumidor": { selo: "posto", acao: "posto", texto: "MODERADO. Candidato a posto de PROCON." },
+      "Quedas / calçada / árvore / bueiro / via pública": { selo: "posto", acao: "posto", texto: "MODERADO. Pode ficar junto de acidentes ou virar fatia própria." },
+      "ECA / infância e juventude": { selo: "chefia", acao: "chefia", texto: "ESPECIALISTA informal da Bruna. Reservar à chefia." },
+      "Poder de polícia — demais": { selo: "residual", acao: "residual", texto: "Volume pequeno. Residual do poder de polícia, não posto próprio." },
+      "Representação / ADI de inconstitucionalidade": { selo: "chefia", acao: "chefia", texto: "Tema de chefia (constitucional). Não abrir como posto." },
+      "PREVI-RIO / financiamento imobiliário / empréstimo servidor": { selo: "afinidade", acao: "afinidade", texto: "Volume pequeno e concentrado. Preservar quem já leva." },
+      "Cemitério / funerário": { selo: "residual", acao: "residual", texto: "RESIDUAL. Não vira posto." },
+      "Trânsito / multa / auto de infração de trânsito": { selo: "afinidade", acao: "afinidade", texto: "ESPECIALISTA informal do Thiago. Preservar afinidade." },
+    };
+    const ACOES = [
+      { id: "fatiar", titulo: "Fatiar", texto: "Quebrar um grupo grande demais em sublotes (órgão, objeto, tipo, valor, ano)." },
+      { id: "posto", titulo: "Formar posto", texto: "Consolidar o recorte pulverizado em um posto de trabalho." },
+      { id: "afinidade", titulo: "Preservar afinidade", texto: "Quem já concentra o tema continua. Não redistribuir no escuro." },
+      { id: "chefia", titulo: "Reservar à chefia", texto: "ECA, assistência e constitucional ficam com Bruna e Limongi." },
+      { id: "residual", titulo: "Deixar residual", texto: "Volume pequeno ou sem nome. Não vira posto." },
+    ];
+    const EIXOS = [
+      { id: "lotes", rotulo: "Lote temático", dica: "19 recortes exclusivos" },
+      { id: "assunto", rotulo: "Assunto principal", dica: "coluna da planilha" },
+      { id: "familia", rotulo: "Família", dica: "assuntos agrupados" },
+      { id: "responsavel", rotulo: "Responsável", dica: "como está hoje" },
+      { id: "juizo", rotulo: "Juízo", dica: "vara / tribunal" },
+      { id: "ano", rotulo: "Ano", dica: "idade do processo" },
+      { id: "token", rotulo: "Palavra do secundário", dica: "fatura, ônibus, ECA…" },
+    ];
+
+    const nomePessoa = (s) => s.toLowerCase().replace(/(^|\s)\S/g, (m) => m.toUpperCase());
+    const pct = (n) => ((n / TOTAL) * 100).toFixed(1).replace(".", ",") + "%";
+    const hhiDe = (postos) => {
+      const soma = Object.values(postos).reduce((a, b) => a + b, 0) || 1;
+      return Object.values(postos).reduce((a, n) => a + (n / soma) ** 2, 0);
+    };
+    const dono = (postos) => {
+      const pares = Object.entries(postos).sort((a, b) => b[1] - a[1]);
+      return pares[0] ? { nome: nomePessoa(pares[0][0]), n: pares[0][1], share: pares[0][1] / (Object.values(postos).reduce((a, b) => a + b, 0) || 1) } : null;
+    };
+    const sugerir = (item, eixo) => {
+      if (eixo === "lotes" && vereditoDe(item.nome)) return vereditoDe(item.nome);
+      if (eixo === "responsavel") {
+        if (/Bruna|Limongi/i.test(item.nome)) {
+          return { selo: "chefia", acao: "chefia", texto: "Chefia. Não é posto especialista — o acervo dela/dele entra no reduzido compartilhado." };
+        }
+        return { selo: "afinidade", acao: "afinidade", texto: "Acervo atual desta pessoa. Para decidir o que fica, volte aos lotes temáticos — não se redistribui pelo nome." };
+      }
+      if (eixo === "ano") {
+        return { selo: "fatiar", acao: "fatiar", texto: "Idade do processo. Serve para separar estoque velho do fluxo, não para formar posto." };
+      }
+      if (eixo === "juizo") {
+        return { selo: "afinidade", acao: "afinidade", texto: "Vara. Útil para especializar quem já atende aquele juízo, não para virar posto sozinho." };
+      }
+      const nPessoas = item.nPessoas ?? 0;
+      const share = item.shareMax ?? 0;
+      const nome = item.nome;
+      if (/outros|residual|demais/i.test(nome) || item.n < 20) return { selo: "residual", acao: "residual", texto: "Volume pequeno ou sem nome próprio. Residual." };
+      if (/ECA|infância|assistência|inconstitucional|Constitucional/i.test(nome)) return { selo: "chefia", acao: "chefia", texto: "Tema sensível ou de chefia. Não abrir como posto." };
+      if (item.n >= 400) return { selo: "fatiar", acao: "fatiar", texto: "Grande demais para um posto. Primeiro fatiar." };
+      if (share >= 0.28 && item.n < 120) return { selo: "afinidade", acao: "afinidade", texto: "Já há alguém concentrando. Preservar afinidade." };
+      if (nPessoas >= 7 && item.n >= 70) return { selo: "posto", acao: "posto", texto: "Pulverizado e com volume. Candidato a posto." };
+      if (item.n >= 40) return { selo: "posto", acao: "posto", texto: "Volume suficiente para virar recorte de trabalho." };
+      return { selo: "residual", acao: "residual", texto: "Ainda pequeno para decidir posto." };
+    };
+
+    const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    const fold = (s) => String(s ?? "").normalize("NFD").replace(/\p{M}/gu, "").toLowerCase();
+    const postosObj = (postos) => {
+      if (!postos) return {};
+      if (Array.isArray(postos)) return Object.fromEntries(postos);
+      return postos;
+    };
+    const vereditoDe = (nome) => {
+      if (VEREDITO[nome]) return VEREDITO[nome];
+      const chave = Object.keys(VEREDITO).find((k) => nome.startsWith(k) || k.startsWith(nome));
+      return chave ? VEREDITO[chave] : null;
+    };
+
+    const estado = { eixo: "lotes", grupos: [], escolhido: 0, resumo: null, lotes: null, acoes: [], busca: "" };
+
+    function agrupar(chaveFn) {
+      const mapa = new Map();
+      for (const a of estado.acoes) {
+        const chaves = chaveFn(a);
+        for (const nome of Array.isArray(chaves) ? chaves : [chaves]) {
+          if (!nome) continue;
+          const g = mapa.get(nome) ?? { nome, n: 0, postos: {}, itens: [] };
+          g.n += 1;
+          g.postos[a.posto] = (g.postos[a.posto] ?? 0) + 1;
+          g.itens.push(a);
+          mapa.set(nome, g);
+        }
+      }
+      return [...mapa.values()]
+        .map((g) => {
+          const d = dono(g.postos);
+          return { ...g, nPessoas: Object.keys(g.postos).length, shareMax: d?.share ?? 0 };
+        })
+        .sort((a, b) => b.n - a.n);
+    }
+
+    function gruposDoEixo() {
+      if (estado.acoes.length) {
+        if (estado.eixo === "lotes") return agrupar((a) => a.lote);
+        if (estado.eixo === "assunto") return agrupar((a) => a.prin);
+        if (estado.eixo === "familia") return agrupar((a) => FAMILIAS[a.prin] ?? "Outros / residual");
+        if (estado.eixo === "responsavel") return agrupar((a) => nomePessoa(a.posto));
+        if (estado.eixo === "juizo") return agrupar((a) => a.juizo || "Sem juízo");
+        if (estado.eixo === "ano") return agrupar((a) => a.ano || "Indeterminado");
+        if (estado.eixo === "token") {
+          return agrupar((a) => a.sec.split(";").map((t) => t.trim()).filter(Boolean)).slice(0, 30);
+        }
+      }
+      const r = estado.resumo;
+      const mapPar = (pares) => pares.map(([nome, n]) => ({ nome, n, postos: {} }));
+      if (estado.eixo === "lotes") {
+        return estado.lotes.lotes_exclusivos.map((l) => {
+          const postos = postosObj(l.postos);
+          const d = dono(postos);
+          return { nome: l.lote, n: l.n, postos, nPessoas: Object.keys(postos).length, shareMax: d?.share ?? 0, itens: [] };
+        });
+      }
+      if (estado.eixo === "assunto") return mapPar(r.ass_prin);
+      if (estado.eixo === "familia") {
+        const acc = {};
+        for (const [assunto, n] of r.ass_prin) {
+          const fam = FAMILIAS[assunto] ?? "Outros / residual";
+          acc[fam] = (acc[fam] ?? 0) + n;
+        }
+        return Object.entries(acc).map(([nome, n]) => ({ nome, n, postos: {} })).sort((a, b) => b.n - a.n);
+      }
+      if (estado.eixo === "responsavel") return r.postos.map(([nome, n]) => ({ nome: nomePessoa(nome), n, postos: {} }));
+      if (estado.eixo === "juizo") return mapPar((estado.lotes.juizo_norm ?? r.juizos_top).slice(0, 18));
+      if (estado.eixo === "ano") return mapPar([...r.anos].reverse());
+      if (estado.eixo === "token") return mapPar(r.tokens_sec.slice(0, 24));
+      return [];
+    }
+
+    function pintarKpis() {
+      const r = estado.resumo;
+      const nAcoes = estado.acoes.length || TOTAL;
+      const cobranca = estado.acoes.length
+        ? estado.acoes.filter((a) => a.lote.startsWith("Cobrança")).length
+        : estado.lotes.lotes_exclusivos[0].n;
+      const nLotes = estado.acoes.length
+        ? new Set(estado.acoes.map((a) => a.lote)).size
+        : estado.lotes.lotes_exclusivos.length;
+      document.getElementById("kpis").innerHTML = [
+        [nAcoes.toLocaleString("pt-BR"), "Processos"],
+        [String(r.postos.length), "Responsáveis"],
+        [String(r.ass_prin.length), "Assuntos principais"],
+        [String(nLotes), "Lotes temáticos"],
+        [pct(cobranca), "Só a cobrança"],
+      ].map(([n, s]) => `<div class="kpi"><b>${n}</b><span>${s}</span></div>`).join("");
+    }
+
+    function pintarEixos() {
+      document.getElementById("eixos").innerHTML = EIXOS.map((e) =>
+        `<button type="button" class="eixo" data-eixo="${e.id}" aria-pressed="${e.id === estado.eixo}">
+          ${e.rotulo}<small>${e.dica}</small>
+        </button>`
+      ).join("");
+    }
+
+    function pintarLista() {
+      const eixo = EIXOS.find((e) => e.id === estado.eixo);
+      document.getElementById("titulo-lista").textContent = eixo.rotulo;
+      const max = estado.grupos[0]?.n ?? 1;
+      document.getElementById("lista").innerHTML = estado.grupos.map((g, i) => {
+        const s = sugerir(g, estado.eixo);
+        return `<button type="button" class="grupo" data-i="${i}"${i === estado.escolhido ? ' aria-current="true"' : ""}>
+          <span class="n">${g.n}</span>
+          <span>
+            <span class="nome">${g.nome}</span>
+            <span class="meta">${pct(g.n)}${g.nPessoas ? ` · ${g.nPessoas} pessoas` : ""}</span>
+            <span class="barra"><i style="width:${(g.n / max) * 100}%"></i></span>
+          </span>
+          <span class="selo-acao ${s.selo}">${ACOES.find((a) => a.id === s.acao).titulo}</span>
+        </button>`;
+      }).join("");
+    }
+
+    function pintarDetalhe() {
+      const g = estado.grupos[estado.escolhido];
+      const box = document.getElementById("detalhe");
+      if (!g) {
+        box.innerHTML = `<h2>Ações possíveis</h2><p class="vazio">Escolha um grupo.</p>`;
+        return;
+      }
+      const s = sugerir(g, estado.eixo);
+      const postosHtml = g.postos
+        ? `<div class="postos">${Object.entries(g.postos).sort((a, b) => b[1] - a[1]).map(([nome, n]) => {
+            const share = n / g.n;
+            return `<div class="posto"><span>${nomePessoa(nome)}</span><b>${n}</b><span class="faixa"><i style="width:${share * 100}%"></i></span></div>`;
+          }).join("")}</div>`
+        : g.nPessoas
+          ? `<p>${g.nPessoas} responsáveis atuais levam este assunto.</p>`
+          : "";
+      const sub = g.nome.startsWith("Cobrança contratual")
+        ? `<div class="sublotes">
+            <div class="sublote">Por órgão — Comlurb, Conservação, Saúde, Educação…</div>
+            <div class="sublote">Por objeto — coleta, iluminação, merenda, obra…</div>
+            <div class="sublote">Por tipo — monitória, execução, cobrança simples</div>
+            <div class="sublote">Por valor ou por ano — o estoque velho separado do fluxo</div>
+          </div>`
+        : "";
+      box.innerHTML = `
+        <h2>Este recorte</h2>
+        <div class="detalhe">
+          <h3>${g.nome}</h3>
+          <p><b>${g.n}</b> processos · ${pct(g.n)} do acervo. ${s.texto}</p>
+          ${postosHtml}
+          ${sub}
+        </div>
+        <h2>O que dá para fazer</h2>
+        <div class="acoes">${ACOES.map((a) =>
+          `<div class="acao${a.id === s.acao ? " vale" : ""}"><b>${a.titulo}${a.id === s.acao ? " · vale aqui" : ""}</b><p>${a.texto}</p></div>`
+        ).join("")}</div>
+        <p class="aviso">Fotografia da planilha de 23/09/2026. Heurística de planejamento — ainda não é lote oficial.</p>
+      `;
+    }
+
+    function pintarProcessos() {
+      const caixa = document.getElementById("acoes-do-lote");
+      const g = estado.grupos[estado.escolhido];
+      if (!g || !estado.acoes.length) {
+        caixa.hidden = true;
+        return;
+      }
+      caixa.hidden = false;
+      const q = fold(estado.busca);
+      const itens = (g.itens ?? []).filter((a) => {
+        if (!q) return true;
+        return fold(`${a.pa} ${a.cnj} ${a.prin} ${a.sec} ${a.resumo} ${a.posto}`).includes(q);
+      });
+      document.getElementById("titulo-acoes").textContent = `Ações · ${g.nome}`;
+      document.getElementById("conta-acoes").textContent = q
+        ? `${itens.length} de ${g.n} neste recorte`
+        : `${g.n} processos neste recorte — cada um com o resumo da planilha`;
+      document.getElementById("processos").innerHTML = itens.length
+        ? itens.map((a) => `
+          <article class="processo">
+            <div class="topo">
+              <span class="pa">${esc(a.pa)}</span>
+              <span class="quem">${esc(nomePessoa(a.posto))}${a.ano ? ` · ${esc(a.ano)}` : ""}</span>
+              <span class="quem">${esc(a.cnj)}</span>
+            </div>
+            <div class="assuntos">${esc(a.prin)}${a.sec ? ` · ${esc(a.sec)}` : ""}</div>
+            <p class="resumo">${esc(a.resumo)}</p>
+          </article>`).join("")
+        : `<p class="vazio">Nenhuma ação neste recorte ${q ? "para essa busca" : ""}.</p>`;
+    }
+
+    function aplicarEixo(id) {
+      estado.eixo = id;
+      estado.grupos = gruposDoEixo();
+      estado.escolhido = 0;
+      estado.busca = "";
+      const campo = document.getElementById("busca-acoes");
+      if (campo) campo.value = "";
+      pintarEixos();
+      pintarLista();
+      pintarDetalhe();
+      pintarProcessos();
+    }
+
+    document.getElementById("eixos").addEventListener("click", (ev) => {
+      const btn = ev.target.closest("[data-eixo]");
+      if (btn) aplicarEixo(btn.dataset.eixo);
+    });
+    document.getElementById("lista").addEventListener("click", (ev) => {
+      const btn = ev.target.closest("[data-i]");
+      if (!btn) return;
+      estado.escolhido = Number(btn.dataset.i);
+      pintarLista();
+      pintarDetalhe();
+      pintarProcessos();
+    });
+    document.getElementById("busca-acoes").addEventListener("input", (ev) => {
+      estado.busca = ev.target.value;
+      pintarProcessos();
+    });
+
+    const json = (nome) => fetch(nome).then((r) => {
+      if (!r.ok) throw new Error(nome);
+      return r.json();
+    });
+    Promise.all([
+      json("resumo_acervo.json"),
+      json("lotes_tematicos.json"),
+      json("acoes.json").catch(() => []),
+    ]).then(([resumo, lotes, acoes]) => {
+      estado.resumo = resumo;
+      estado.lotes = lotes;
+      estado.acoes = Array.isArray(acoes) ? acoes : [];
+      if (!estado.acoes.length) {
+        document.querySelector("header p").textContent =
+          "2.942 processos da PSE. Clique num recorte para ver as ações possíveis. Os textos individuais das ações ficam só na cópia local.";
+      }
+      pintarKpis();
+      aplicarEixo("lotes");
+    });
+  </script>
+</body>
+</html>
