@@ -4,189 +4,247 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Agrupar o acervo · PSE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --navy: #132238;
-      --folha: #f7f1e4;
-      --latão: #c9b99a;
-      --tinta: #f4efe4;
-      --linha: rgba(201,185,154,.28);
-      --forte: #c45c26;
-      --moderado: #8a7040;
-      --especialista: #2f5d4a;
-      --residual: #6b7280;
+      --azul: #1d4ed8;
+      --azul-escuro: #1e3a5f;
+      --azul-meio: #2563eb;
+      --azul-claro: #dbeafe;
+      --azul-suave: #eff6ff;
+      --fundo: #f1f5f9;
+      --superficie: #ffffff;
+      --texto: #1e293b;
+      --texto-suave: #475569;
+      --linha: #bfdbfe;
+      --foco: #1d4ed8;
     }
     * { box-sizing: border-box; }
     html, body { margin: 0; min-height: 100%; }
     body {
-      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-      background: radial-gradient(1200px 700px at 10% -10%, #1c334d, var(--navy));
-      color: var(--tinta);
+      font-family: Lato, "Segoe UI", sans-serif;
+      background: var(--fundo);
+      color: var(--texto);
+      line-height: 1.55;
     }
-    header {
+    :focus-visible {
+      outline: 3px solid var(--foco);
+      outline-offset: 2px;
+    }
+    .saltar {
+      position: absolute;
+      left: .8rem;
+      top: .8rem;
+      transform: translateY(-160%);
+      background: var(--azul-escuro);
+      color: #fff;
+      padding: .5rem .75rem;
+      z-index: 20;
+    }
+    .saltar:focus { transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+    .topo-pagina {
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 1rem;
-      padding: 1.3rem 1.8rem 0;
+      padding: 1.4rem 1.6rem 1.2rem;
       align-items: end;
+      background: linear-gradient(160deg, #1e3a5f 0%, #1d4ed8 100%);
+      color: #fff;
     }
-    h1 { margin: 0; font-size: 1.7rem; letter-spacing: -.03em; }
-    header p { margin: .35rem 0 0; max-width: 42rem; color: var(--latão); font-size: .95rem; }
+    h1 {
+      margin: 0;
+      font-family: "EB Garamond", Georgia, serif;
+      font-size: 1.85rem;
+      font-weight: 600;
+      letter-spacing: -.02em;
+      line-height: 1.2;
+    }
+    .topo-pagina p { margin: .4rem 0 0; max-width: 44rem; color: #dbeafe; font-size: 1rem; }
     .selo {
-      font-size: .68rem;
-      letter-spacing: .16em;
+      font-size: .72rem;
+      letter-spacing: .14em;
       text-transform: uppercase;
-      color: var(--latão);
-      border: 1px solid var(--linha);
-      padding: .35rem .55rem;
+      color: #dbeafe;
+      border: 1px solid rgba(219,234,254,.35);
+      padding: .45rem .65rem;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
       white-space: nowrap;
     }
     .kpis {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: .7rem;
-      padding: 1rem 1.8rem 0;
+      padding: 1rem 1.6rem 0;
     }
     .kpi {
       border: 1px solid var(--linha);
-      padding: .65rem .75rem .55rem;
-      background: rgba(247,241,228,.04);
+      padding: .75rem .8rem .65rem;
+      background: var(--superficie);
     }
-    .kpi b { display: block; font-size: 1.45rem; font-variant-numeric: tabular-nums; }
-    .kpi span { font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: var(--latão); }
+    .kpi b {
+      display: block;
+      font-family: "EB Garamond", Georgia, serif;
+      font-size: 1.55rem;
+      font-variant-numeric: tabular-nums;
+      color: var(--azul-escuro);
+    }
+    .kpi span { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--texto-suave); }
     main {
       display: grid;
-      grid-template-columns: 13rem 1fr 22rem;
+      grid-template-columns: 14rem 1fr 22rem;
       gap: 1rem;
-      padding: 1rem 1.8rem 2rem;
-    }
-    @media (max-width: 1100px) {
-      header, main { grid-template-columns: 1fr; }
-      .kpis { grid-template-columns: repeat(2, 1fr); }
+      padding: 1rem 1.6rem 1.4rem;
     }
     h2 {
       margin: 0 0 .7rem;
-      font-size: .7rem;
-      letter-spacing: .2em;
+      font-size: .72rem;
+      letter-spacing: .16em;
       text-transform: uppercase;
-      color: var(--latão);
+      color: var(--azul-escuro);
     }
-    .eixos { display: grid; gap: .4rem; }
+    .eixos { display: grid; gap: .45rem; }
     .eixo {
       appearance: none;
-      background: transparent;
-      color: var(--tinta);
+      background: var(--superficie);
+      color: var(--texto);
       border: 1px solid var(--linha);
-      padding: .55rem .65rem;
+      padding: .65rem .7rem;
+      min-height: 44px;
       text-align: left;
       font: inherit;
       cursor: pointer;
+      transition: background .18s ease, border-color .18s ease, color .18s ease;
     }
+    .eixo:hover { border-color: var(--azul-meio); }
     .eixo[aria-pressed="true"] {
-      background: var(--folha);
-      color: var(--navy);
-      border-color: var(--folha);
+      background: var(--azul);
+      color: #fff;
+      border-color: var(--azul);
     }
-    .eixo small { display: block; color: inherit; opacity: .7; font-size: .72rem; }
+    .eixo small { display: block; color: inherit; opacity: .75; font-size: .75rem; }
     .cartao {
-      background: var(--folha);
-      color: var(--navy);
+      background: var(--superficie);
+      color: var(--texto);
       padding: 1rem 1.05rem 1.1rem;
-      box-shadow: 0 18px 40px rgba(0,0,0,.28);
+      border: 1px solid var(--linha);
       min-height: 28rem;
     }
-    .cartao.escuro {
-      background: transparent;
-      color: var(--tinta);
-      box-shadow: none;
-      border: 1px solid var(--linha);
+    .cartao.painel {
+      background: var(--azul-escuro);
+      color: #fff;
+      border-color: var(--azul-escuro);
     }
-    .lista { display: grid; gap: .35rem; }
+    .cartao.painel h2 { color: #bfdbfe; }
+    .lista { display: grid; gap: .4rem; }
     .grupo {
       display: grid;
-      grid-template-columns: 4.2rem 1fr auto;
+      grid-template-columns: 4.4rem 1fr auto;
       gap: .55rem;
       align-items: center;
       width: 100%;
+      min-height: 44px;
       text-align: left;
       font: inherit;
       color: inherit;
-      background: rgba(19,34,56,.04);
-      border: 1px solid rgba(19,34,56,.08);
-      padding: .45rem .55rem;
+      background: var(--azul-suave);
+      border: 1px solid transparent;
+      border-left: 3px solid transparent;
+      padding: .55rem .6rem;
       cursor: pointer;
+      transition: background .18s ease, border-color .18s ease;
     }
-    .grupo:hover, .grupo[aria-current="true"] { background: #fff; border-color: var(--latão); }
-    .grupo .n { font-variant-numeric: tabular-nums; font-weight: 700; }
-    .grupo .nome { font-size: .92rem; }
-    .grupo .meta { font-size: .72rem; color: #6b5a38; }
+    .grupo:hover { background: #fff; border-color: var(--linha); }
+    .grupo[aria-current="true"] {
+      background: #fff;
+      border-color: var(--linha);
+      border-left-color: var(--azul);
+    }
+    .grupo .n { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--azul-escuro); }
+    .grupo .nome { font-size: .95rem; }
+    .grupo .meta { font-size: .75rem; color: var(--texto-suave); }
     .selo-acao {
-      font-size: .62rem;
-      letter-spacing: .08em;
+      font-size: .65rem;
+      letter-spacing: .06em;
       text-transform: uppercase;
-      padding: .2rem .4rem;
+      padding: .28rem .45rem;
       white-space: nowrap;
     }
-    .selo-acao.fatiar { background: #f3d6c4; color: #7a2e0c; }
-    .selo-acao.posto { background: #dce8e1; color: #1f4637; }
-    .selo-acao.afinidade { background: #e8dfc8; color: #5a4718; }
-    .selo-acao.chefia { background: #d6e0ee; color: #1d3557; }
-    .selo-acao.residual { background: #e5e7eb; color: #374151; }
-    .barra { height: .28rem; background: rgba(19,34,56,.1); margin-top: .25rem; }
-    .barra i { display: block; height: 100%; background: #8a7040; }
-    .vazio { color: #6b5a38; font-size: .9rem; }
-    .detalhe h3 { margin: 0 0 .35rem; font-size: 1.15rem; }
-    .detalhe p { margin: 0 0 .8rem; font-size: .92rem; line-height: 1.45; }
-    .postos { display: grid; gap: .3rem; margin: .8rem 0 1rem; }
+    .selo-acao.fatiar { background: #ffedd5; color: #9a3412; }
+    .selo-acao.posto { background: #dbeafe; color: #1e3a8a; }
+    .selo-acao.afinidade { background: #e0f2fe; color: #075985; }
+    .selo-acao.chefia { background: #e0e7ff; color: #312e81; }
+    .selo-acao.residual { background: #e2e8f0; color: #334155; }
+    .barra { height: .3rem; background: #dbeafe; margin-top: .3rem; }
+    .barra i { display: block; height: 100%; background: var(--azul-meio); }
+    .vazio { color: var(--texto-suave); font-size: .95rem; }
+    .detalhe h3 {
+      margin: 0 0 .35rem;
+      font-family: "EB Garamond", Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    .detalhe p { margin: 0 0 .8rem; font-size: .95rem; }
+    .postos { display: grid; gap: .35rem; margin: .8rem 0 1rem; }
     .posto {
       display: grid;
       grid-template-columns: 1fr 2.6rem 4.5rem;
       gap: .4rem;
       align-items: center;
-      font-size: .82rem;
+      font-size: .85rem;
     }
-    .posto .faixa { height: .35rem; background: rgba(247,241,228,.12); }
-    .posto .faixa i { display: block; height: 100%; background: var(--latão); }
+    .posto .faixa { height: .35rem; background: rgba(255,255,255,.15); }
+    .posto .faixa i { display: block; height: 100%; background: #93c5fd; }
     .acoes { display: grid; gap: .45rem; }
     .acao {
-      border: 1px solid var(--linha);
-      padding: .55rem .65rem;
-      background: rgba(247,241,228,.04);
+      border: 1px solid rgba(191,219,254,.35);
+      padding: .6rem .7rem;
+      background: rgba(255,255,255,.04);
     }
     .acao b { display: block; font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; }
-    .acao p { margin: .25rem 0 0; font-size: .82rem; color: var(--latão); }
-    .acao.vale { border-color: var(--folha); background: rgba(247,241,228,.1); }
-    .acao.vale b { color: var(--folha); }
+    .acao p { margin: .25rem 0 0; font-size: .85rem; color: #bfdbfe; }
+    .acao.vale { border-color: #93c5fd; background: rgba(37,99,235,.28); }
+    .acao.vale b { color: #fff; }
     .sublotes { display: grid; gap: .35rem; margin-top: .6rem; }
-    .sublote { font-size: .86rem; padding: .4rem .5rem; background: rgba(19,34,56,.05); }
-    .aviso { font-size: .78rem; color: #6b5a38; margin-top: .8rem; }
+    .sublote { font-size: .88rem; padding: .45rem .55rem; background: var(--azul-suave); color: var(--texto); }
+    .cartao.painel .sublote { background: rgba(255,255,255,.08); color: #eff6ff; }
+    .aviso { font-size: .8rem; color: var(--texto-suave); margin-top: .8rem; }
+    .cartao.painel .aviso { color: #bfdbfe; }
     .acoes-do-lote {
-      margin: 0 1.8rem 2rem;
-      background: var(--folha);
-      color: var(--navy);
+      margin: 0 1.6rem 2rem;
+      background: var(--superficie);
+      color: var(--texto);
       padding: 1rem 1.05rem 1.2rem;
-      box-shadow: 0 18px 40px rgba(0,0,0,.28);
+      border: 1px solid var(--linha);
     }
-    .acoes-do-lote header {
+    .acoes-do-lote .cabeca {
       display: grid;
-      grid-template-columns: 1fr 18rem;
+      grid-template-columns: 1fr minmax(12rem, 20rem);
       gap: .8rem;
       align-items: end;
-      padding: 0;
     }
     .acoes-do-lote h2 { margin: 0; }
+    .acoes-do-lote label { display: grid; gap: .3rem; font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--azul-escuro); }
     .acoes-do-lote input {
       width: 100%;
       font: inherit;
-      padding: .45rem .6rem;
-      border: 1px solid rgba(19,34,56,.18);
+      min-height: 44px;
+      padding: .55rem .7rem;
+      border: 1px solid var(--linha);
       background: #fff;
+      color: var(--texto);
     }
-    .processos { display: grid; gap: .55rem; margin-top: .85rem; max-height: 70vh; overflow: auto; }
+    .processos { display: grid; gap: .55rem; margin-top: .85rem; }
     .processo {
-      border: 1px solid rgba(19,34,56,.1);
-      padding: .65rem .75rem .7rem;
-      background: #fff;
+      border: 1px solid var(--linha);
+      padding: .75rem .8rem .8rem;
+      background: var(--azul-suave);
     }
     .processo .topo {
       display: grid;
@@ -194,46 +252,69 @@
       gap: .6rem;
       align-items: baseline;
     }
-    .processo .pa { font-variant-numeric: tabular-nums; font-weight: 700; font-size: .92rem; }
-    .processo .quem { font-size: .82rem; color: #6b5a38; }
-    .processo .assuntos { margin: .25rem 0 .4rem; font-size: .8rem; color: #5a4a2a; }
-    .processo .resumo { margin: 0; font-size: .92rem; line-height: 1.45; white-space: pre-wrap; }
+    .processo .pa { font-variant-numeric: tabular-nums; font-weight: 700; font-size: .95rem; color: var(--azul-escuro); }
+    .processo .quem { font-size: .85rem; color: var(--texto-suave); }
+    .processo .assuntos { margin: .3rem 0 .45rem; font-size: .82rem; color: #1e40af; }
+    .processo .resumo { margin: 0; font-size: 1rem; line-height: 1.55; white-space: pre-wrap; }
+    .mais {
+      appearance: none;
+      margin-top: .4rem;
+      min-height: 44px;
+      padding: .6rem 1rem;
+      border: 1px solid var(--azul);
+      background: #fff;
+      color: var(--azul);
+      font: inherit;
+      cursor: pointer;
+    }
+    .mais:hover { background: var(--azul-suave); }
     @media (max-width: 1100px) {
-      .acoes-do-lote header { grid-template-columns: 1fr; }
+      .topo-pagina, main { grid-template-columns: 1fr; }
+      .kpis { grid-template-columns: repeat(2, 1fr); }
+      .acoes-do-lote .cabeca { grid-template-columns: 1fr; }
+      .processo .topo { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .kpis { grid-template-columns: 1fr 1fr; }
+      .grupo { grid-template-columns: 3.4rem 1fr; }
+      .grupo .selo-acao { grid-column: 1 / -1; justify-self: start; }
     }
   </style>
 </head>
 <body>
-  <header>
+  <a class="saltar" href="#conteudo">Ir para o conteúdo</a>
+  <header class="topo-pagina">
     <div>
       <h1>Como agrupar — e o que dá para fazer</h1>
-      <p>2.942 processos da PSE. Clique num recorte para ver as ações possíveis. Nada aqui grava posto; é só para decidir.</p>
+      <p id="olho">2.942 processos da PSE. Clique num recorte para ver as ações possíveis. Nada aqui grava posto; é só para decidir.</p>
     </div>
     <div class="selo">PSE · PGM-Rio · fotografia 2026-09-23</div>
   </header>
-  <section class="kpis" id="kpis"></section>
-  <main>
+  <section class="kpis" id="kpis" aria-label="Números do acervo"></section>
+  <main id="conteudo">
     <aside>
       <h2>Agrupar por</h2>
       <div class="eixos" id="eixos"></div>
     </aside>
-    <section class="cartao">
+    <section class="cartao" aria-labelledby="titulo-lista">
       <h2 id="titulo-lista">Lotes temáticos</h2>
       <div class="lista" id="lista"></div>
     </section>
-    <aside class="cartao escuro" id="detalhe">
+    <aside class="cartao painel" id="detalhe">
       <h2>Ações possíveis</h2>
       <p class="vazio">Escolha um grupo à esquerda. As ações que valem para aquele recorte ficam destacadas.</p>
     </aside>
   </main>
   <section class="acoes-do-lote" id="acoes-do-lote" hidden>
-    <header>
+    <div class="cabeca">
       <div>
         <h2 id="titulo-acoes">Ações deste recorte</h2>
         <p class="aviso" id="conta-acoes" style="margin:.3rem 0 0"></p>
       </div>
-      <input id="busca-acoes" type="search" placeholder="Buscar PA, resumo, assunto…" autocomplete="off" />
-    </header>
+      <label for="busca-acoes">Buscar neste recorte
+        <input id="busca-acoes" type="search" placeholder="PA, resumo, assunto…" autocomplete="off" />
+      </label>
+    </div>
     <div class="processos" id="processos"></div>
   </section>
   <script>
@@ -342,7 +423,8 @@
       return chave ? VEREDITO[chave] : null;
     };
 
-    const estado = { eixo: "lotes", grupos: [], escolhido: 0, resumo: null, lotes: null, acoes: [], busca: "" };
+    const PAGINA = 40;
+    const estado = { eixo: "lotes", grupos: [], escolhido: 0, resumo: null, lotes: null, acoes: [], busca: "", mostra: PAGINA };
 
     function agrupar(chaveFn) {
       const mapa = new Map();
@@ -503,8 +585,10 @@
       document.getElementById("conta-acoes").textContent = q
         ? `${itens.length} de ${g.n} neste recorte`
         : `${g.n} processos neste recorte — cada um com o resumo da planilha`;
+      const visiveis = itens.slice(0, estado.mostra);
+      const resto = itens.length - visiveis.length;
       document.getElementById("processos").innerHTML = itens.length
-        ? itens.map((a) => `
+        ? visiveis.map((a) => `
           <article class="processo">
             <div class="topo">
               <span class="pa">${esc(a.pa)}</span>
@@ -513,8 +597,12 @@
             </div>
             <div class="assuntos">${esc(a.prin)}${a.sec ? ` · ${esc(a.sec)}` : ""}</div>
             <p class="resumo">${esc(a.resumo)}</p>
-          </article>`).join("")
-        : `<p class="vazio">Nenhuma ação neste recorte ${q ? "para essa busca" : ""}.</p>`;
+          </article>`).join("") + (resto > 0
+          ? `<button type="button" class="mais" data-mais>Mostrar mais ${Math.min(PAGINA, resto)} de ${resto}</button>`
+          : "")
+        : `<p class="vazio" role="status">${q
+          ? `Nada com “${esc(estado.busca)}”. Tente o PA, um órgão ou uma palavra do resumo.`
+          : "Nenhuma ação neste recorte."}</p>`;
     }
 
     function aplicarEixo(id) {
@@ -522,6 +610,7 @@
       estado.grupos = gruposDoEixo();
       estado.escolhido = 0;
       estado.busca = "";
+      estado.mostra = PAGINA;
       const campo = document.getElementById("busca-acoes");
       if (campo) campo.value = "";
       pintarEixos();
@@ -538,13 +627,25 @@
       const btn = ev.target.closest("[data-i]");
       if (!btn) return;
       estado.escolhido = Number(btn.dataset.i);
+      estado.mostra = PAGINA;
       pintarLista();
       pintarDetalhe();
       pintarProcessos();
     });
-    document.getElementById("busca-acoes").addEventListener("input", (ev) => {
-      estado.busca = ev.target.value;
+    document.getElementById("processos").addEventListener("click", (ev) => {
+      if (!ev.target.closest("[data-mais]")) return;
+      estado.mostra += PAGINA;
       pintarProcessos();
+    });
+    let buscaTimer;
+    document.getElementById("busca-acoes").addEventListener("input", (ev) => {
+      const valor = ev.target.value;
+      clearTimeout(buscaTimer);
+      buscaTimer = setTimeout(() => {
+        estado.busca = valor;
+        estado.mostra = PAGINA;
+        pintarProcessos();
+      }, 180);
     });
 
     const json = (nome) => fetch(nome).then((r) => {
@@ -560,7 +661,7 @@
       estado.lotes = lotes;
       estado.acoes = Array.isArray(acoes) ? acoes : [];
       if (!estado.acoes.length) {
-        document.querySelector("header p").textContent =
+        document.getElementById("olho").textContent =
           "2.942 processos da PSE. Clique num recorte para ver as ações possíveis. Os textos individuais das ações ficam só na cópia local.";
       }
       pintarKpis();
